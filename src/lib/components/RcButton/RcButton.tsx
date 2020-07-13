@@ -1,3 +1,9 @@
 import React from 'react'
 
-export const RcButton = () => <button>I'm button</button>
+type TRcButtonProps = {
+  primary?: boolean
+  secondary?: boolean
+  icon?: string
+}
+
+export const RcButton = (props: TRcButtonProps) => <button>I'm button</button>

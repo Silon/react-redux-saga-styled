@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { Route, Switch } from 'react-router-dom'
-import LoginPage from '../../pages/Login'
-import DashboardPage from '../../pages/Dashboard'
+import { Route, Switch, RouteProps } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { firebasaeUserIsAuthenticated } from '../../store/firebaseUser/selectors'
 import { firebaseAuthenticateRequest } from '../../store/firebaseUser/actions'
+import { privateRoutes, publicRoutes } from '../../routes/routes'
 
-const Routes = () => (
+const RouteWithSubRoutes = (route: any) => {
+  const routeRender = (props: any) => <route.component {...props} routes={route.routes} />
+  return <Route path={route.path} render={routeRender} />
+}
+
+const Routes = ({ routes }: { routes: RouteProps[] }) => (
   <Switch>
-    <Route exact={true} path="/" component={DashboardPage} />
+    {routes.map((route, i) => (
+      <RouteWithSubRoutes key={i} {...route} />
+    ))}
   </Switch>
 )
 
@@ -28,8 +34,8 @@ function App() {
   }, [isAuthenticated])
 
   if (loading) return <div>LOADING</div>
-  if (isAuthenticated) return <Routes />
-  return <Route exact={true} path="/login" component={LoginPage} />
+  if (isAuthenticated) return <Routes routes={privateRoutes} />
+  return <Routes routes={publicRoutes} />
 }
 
 export default App
