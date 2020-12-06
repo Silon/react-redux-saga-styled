@@ -1,16 +1,16 @@
 {
-  "editor.formatOnSave": false,
-  "[javascript]": {
-    "editor.formatOnSave": true
-  },
+  "editor.formatOnSave": true,
+  "javascript.format.enable": false,
+  "editor.foldingStrategy": "indentation",
+  "eslint.alwaysShowStatus": true,
   "[typescript]": {
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "prettier.tslintIntegration": true,
-  "prettier.eslintIntegration": true,
-  "prettier.jsxSingleQuote": false,
-  "prettier.singleQuote": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"typescript.tsdk": "node_modules\\typescript\\lib"
 }

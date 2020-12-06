@@ -1,17 +1,16 @@
-import DashboardPage from './Dashboard'
-import LoginPage from './Login'
+import DevelopmentPage from './Development'
 import { RouteProps } from 'react-router-dom'
 
 export const privateRoutes: RouteProps[] = [
   {
     path: '/',
-    component: DashboardPage,
+    component: DevelopmentPage,
   },
 ]
 
 export const publicRoutes: RouteProps[] = [
   {
     path: '/login',
-    component: LoginPage,
+    component: DevelopmentPage,
   },
 ]

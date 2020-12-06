@@ -1,6 +1,5 @@
-import { all, fork } from 'redux-saga/effects'
-import { firebaseUser } from './firebaseUser/sagas'
+import { all } from "redux-saga/effects";
 
 export default function* rootSaga() {
-  yield all([fork(firebaseUser)])
+  yield all([]);
 }

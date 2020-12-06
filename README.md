@@ -1,8 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Included Features
+
 - Typescript
-- React 
+- React
 - React Router (Connected React Router)
 - Redux
 - Redux Saga
@@ -10,6 +11,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Redux Thunk
 - Redux Devtools
 - Styled Components
-- TSLint
+- ESLint
 - Prettier
-- Firebase

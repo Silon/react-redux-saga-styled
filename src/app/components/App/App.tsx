@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { Route, Switch, RouteProps } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { firebasaeUserIsAuthenticated } from '../../store/firebaseUser/selectors'
-import { firebaseAuthenticateRequest } from '../../store/firebaseUser/actions'
-import { privateRoutes, publicRoutes } from '../../routes/routes'
+import React, { useEffect, useState } from "react";
+import { Route, RouteProps, Switch } from "react-router-dom";
+import { privateRoutes, publicRoutes } from "../../routes/routes";
 
 const RouteWithSubRoutes = (route: any) => {
-  const routeRender = (props: any) => <route.component {...props} routes={route.routes} />
-  return <Route path={route.path} render={routeRender} />
-}
+  const routeRender = (props: any) => (
+    <route.component {...props} routes={route.routes} />
+  );
+  return <Route path={route.path} render={routeRender} />;
+};
 
 const Routes = ({ routes }: { routes: RouteProps[] }) => (
   <Switch>
@@ -16,26 +15,21 @@ const Routes = ({ routes }: { routes: RouteProps[] }) => (
       <RouteWithSubRoutes key={i} {...route} />
     ))}
   </Switch>
-)
+);
 
 function App() {
-  const dispatch = useDispatch()
-  const [loading, setLoading] = useState(true)
-  const isAuthenticated = useSelector(firebasaeUserIsAuthenticated)
+  const [loading, setLoading] = useState(true);
+  const isAuthenticated = true;
 
   useEffect(() => {
-    dispatch(firebaseAuthenticateRequest())
-  }, [])
-
-  useEffect(() => {
-    if (typeof isAuthenticated !== 'undefined') {
-      setLoading(false)
+    if (typeof isAuthenticated !== "undefined") {
+      setLoading(false);
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated]);
 
-  if (loading) return <div>LOADING</div>
-  if (isAuthenticated) return <Routes routes={privateRoutes} />
-  return <Routes routes={publicRoutes} />
+  if (loading) return <div>LOADING</div>;
+  if (isAuthenticated) return <Routes routes={privateRoutes} />;
+  return <Routes routes={publicRoutes} />;
 }
 
-export default App
+export default App;
